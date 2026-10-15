@@ -1,0 +1,24 @@
+import discord
+from discord.ext import commands
+import random
+
+
+intents = discord.Intents.default()
+intents.message_content = True 
+
+bot = commands.Bot(command_prefix='#', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f"Ha iniciado sesion con {bot.user}")
+
+@bot.command()
+async def lugares_para_viajar (ctx):
+    via_name = random.choice(["https://youtu.be/WdWVWOWCPSI?si=QVMVMVMyHrm_hS3m",
+                "https://youtu.be/GhT7AceZrDI?si=pyWRroE2dqaGjDcx",
+                "https://youtu.be/7xFdYgNbw6U?si=ib6HUYmHCO-ir_c_",
+                "https://youtu.be/IVW0k900i2I?si=Cihkhs4gtQHy9H90"])
+    
+    await ctx.send(f'Aqui tienes un video para que decidas a donde ir de viaje:{via_name}')
+
+bot.run("Pon tu token")
